@@ -22,7 +22,7 @@ text-align: right;
     padding: 15px;
 }
 p{
-color:white;
+color:white; 
 }
 .text-center {
     text-align: center;
