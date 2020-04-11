@@ -7,7 +7,7 @@
           stage("build & SonarQube analysis") {
             agent any
             steps {
-              withSonarQubeEnv('sonar') {
+              withSonarQubeEnv('sonarqube_Demo') {
                 sh 'mvn clean sonar:sonar Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=admin -Dsonar.password=admin -Dsonar.inclusions=**/*.java'
               }
             }
