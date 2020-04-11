@@ -12,19 +12,7 @@ node {
         git url: 'https://github.com/d-dineshbabu/webapp.git'
     }
 
-      stage('Sonarqube') {
-    environment {
-        scannerHome = tool 'SonarQubeScanner'
-    }
-    steps {
-        withSonarQubeEnv('sonarqube') {
-            sh "${scannerHome}/bin/sonar-scanner -D sonar.sources=. -D sonar.tests=. -D sonar.inclusions=*/test/java/servlet/createpage_junit.java -D sonar.test.exclusions=*/test/java/servlet/createpage_junit.java -D sonar.login=admin -D sonar.password=admin"
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
-        }
-    }
-}	
+    
 	
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
