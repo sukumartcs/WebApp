@@ -13,10 +13,10 @@ node {
     }
     
 	stage("build & SonarQube analysis") {
-            agent any
-            steps {
+        steps {     
               withSonarQubeEnv('sonarqube_Demo') {
-                sh 'mvn clean sonar:sonar -Dsonar.host.url=http://18.222.254.192:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.inclusions=**/*.java -Dsonar.exclusions=src/test/java/servlet/*.java'
+		buildInfo = rtMaven.run pom: 'pom.xml', goals: 'clean sonar:sonar -Dsonar.host.url=http://18.222.254.192:9000 -Dsonar.login=admin -Dsonar.password=admin -Dsonar.inclusions=**/*.java -Dsonar.exclusions=src/test/java/servlet/*.java'
+                
               }
             }
           }
