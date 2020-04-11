@@ -12,8 +12,10 @@
     <sonar.language>java</sonar.language>
 <sonar.login>admin</sonar.login>
     <sonar.password>admin</sonar.password>
-  </properties>
-	
+    <sonar.host.url>http://18.222.254.192:9000</sonar.host.url>
+    <sonar.inclusions>**/*.java</sonar.inclusions>
+    <sonar.exclusions>src/test/java/servlet/*.java</sonar.exclusions>
+  </properties>	
 	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
