@@ -21,6 +21,12 @@ node {
 	stage('Maven build') {
         buildInfo = rtMaven.run pom: 'pom.xml', goals: 'package -DskipTests'
     }
+	
+    stage('Deploy to Tomcat'){
+        sshagent(['Tomcat-tatha']) {
+         sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@3.16.48.21:/opt/tomcat8/webapps/'
+      }
+   }
 
     stage('Artifactory configuration') {
         // Tool name from Jenkins configuration
